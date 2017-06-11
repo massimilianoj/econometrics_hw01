@@ -1,0 +1,40 @@
+---
+title: "hw01: Introduction to R"
+author: "Your name^[affiliation]"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: pdf_document
+fontsize: 12pt
+classoption: a4paper
+---
+
+```{r}
+# install the package AER. 
+# If you have already installed the package, write {r, eval = FALSE} instead of {r}
+install.packages("AER")
+```
+
+
+```{r, include=FALSE}
+# load the AER package
+library(AER)
+```
+
+```{r}
+# demand for economic journals and their price
+data("Journals", package = "AER")
+```
+
+
+```{r}
+# plot and linear regression 
+plot(log(subs) ~ log(price/citations), data = Journals)
+j_lm <- lm(log(subs) ~ log(price/citations), data = Journals)
+abline(j_lm)
+```
+
+
+```{r}
+# summary
+summary(j_lm)
+```
+
